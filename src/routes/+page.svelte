@@ -2,6 +2,10 @@
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
+
+    /** @type {import('./$types').PageData} */    
+    export let data;
+
 </script>
 
 <svelte:head>
@@ -25,7 +29,13 @@
 		try editing <strong>src/routes/+page.svelte</strong>
 	</h2>
 
-	<Counter />
+	<h2>Go check out these birds bro:</h2>
+
+	{#each {length: data.pages} as _, i}
+		<a href="/bird/1/{i+1}">Bird {i+1}</a>
+	{/each}
+
+	<!-- <Counter /> -->
 </section>
 
 <style>
